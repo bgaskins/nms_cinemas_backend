@@ -1,7 +1,5 @@
 package com.NMSCinemas.model;
 
-import java.sql.Blob;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,15 +34,11 @@ public class Movies {
 	@Column(name = "auditorium")
 	private String auditorium;
 	
-	@Column(name = "image")
-	private Blob image;
-	
 	public Movies() {
 		
 	}
 	
-	public Movies(String title, String ticket_price, String language, String description, String showtime, String auditorium,
-			Blob image) {
+	public Movies(String title, String ticket_price, String language, String description, String showtime, String auditorium) {
 		super();
 		this.title = title;
 		this.ticket_price = ticket_price;
@@ -52,7 +46,6 @@ public class Movies {
 		this.description = description;
 		this.showtime = showtime;
 		this.auditorium = auditorium;
-		this.image = image;
 	}
 
 	public int getId() {
@@ -98,18 +91,12 @@ public class Movies {
 	public void setAuditorium(String auditorium) {
 		this.auditorium = auditorium;
 	}
-	public Blob getImage() {
-		return image;
-	}
-	public void setImage(Blob image) {
-		this.image = image;
-	}
 
 
 	@Override
 	public String toString() {
 		return "Movies [id=" + id + ", title=" + title + ", ticket_price=" + ticket_price + ", language=" + language
-				+ ", description=" + description + ", showtime=" + showtime + ", auditorium=" + showtime + ", image=" + image + "]";
+				+ ", description=" + description + ", showtime=" + showtime + ", auditorium=" + showtime + "]";
 	}
 
 }

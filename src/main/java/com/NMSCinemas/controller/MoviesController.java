@@ -43,7 +43,7 @@ public class MoviesController {
 	  public ResponseEntity<Movies> createMovie(@RequestBody Movies movie) {
 	    try {
 	     Movies _movies = movieRepository
-	          .save(new Movies (movie.getTitle(), movie.getTicket_price(), movie.getLanguage(), movie.getDescription(), movie.getTicket_price(), movie.getAuditorium(), movie.getImage()));
+	          .save(new Movies (movie.getTitle(), movie.getTicket_price(), movie.getLanguage(), movie.getDescription(), movie.getTicket_price(), movie.getAuditorium()));
 	      return new ResponseEntity<>(_movies, HttpStatus.CREATED);
 	    } catch (Exception e) {
 	      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -62,7 +62,6 @@ public class MoviesController {
 	      _movies.setDescription(movie.getDescription());
 	      _movies.setShowtime(movie.getShowtime());
 	      _movies.setAuditorium(movie.getAuditorium());
-	      _movies.setImage(movie.getImage());
 	      return new ResponseEntity<>(movieRepository.save(_movies), HttpStatus.OK);
 	    } else {
 	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
