@@ -12,6 +12,10 @@ import com.NMSCinemas.model.*;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movies, Long> {
+	
+	@Query(value = "SELECT * FROM movies", nativeQuery = true)
+	public Optional<Movies> getAllMovies();
+	
 	@Query(value = "SELECT * FROM id WHERE id = :id", nativeQuery = true)
 	public Optional<Movies> getMovieById(@Param("id") Long id);
 	

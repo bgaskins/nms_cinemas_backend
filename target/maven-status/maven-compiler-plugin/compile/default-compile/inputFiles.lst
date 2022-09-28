@@ -3,6 +3,7 @@
 /Users/bryangaskins/vs_projects/NMS-Cinemas/NMSCinemas-Backend/src/main/java/com/NMSCinemas/repository/SearchRepository.java
 /Users/bryangaskins/vs_projects/NMS-Cinemas/NMSCinemas-Backend/src/main/java/com/NMSCinemas/repository/UserRepository.java
 /Users/bryangaskins/vs_projects/NMS-Cinemas/NMSCinemas-Backend/src/main/java/com/NMSCinemas/NmsCinemasApplication.java
+/Users/bryangaskins/vs_projects/NMS-Cinemas/NMSCinemas-Backend/src/main/java/com/NMSCinemas/service/UserService.java
 /Users/bryangaskins/vs_projects/NMS-Cinemas/NMSCinemas-Backend/src/main/java/com/NMSCinemas/model/Movies.java
 /Users/bryangaskins/vs_projects/NMS-Cinemas/NMSCinemas-Backend/src/main/java/com/NMSCinemas/controller/AdminController.java
 /Users/bryangaskins/vs_projects/NMS-Cinemas/NMSCinemas-Backend/src/main/java/com/NMSCinemas/repository/MovieRepository.java

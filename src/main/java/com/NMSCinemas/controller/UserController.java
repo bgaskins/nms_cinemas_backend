@@ -1,6 +1,6 @@
 package com.NMSCinemas.controller;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,63 +16,61 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.NMSCinemas.model.User;
-import com.NMSCinemas.repository.UserRepository;
+import com.NMSCinemas.service.UserService;
 
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/user")
 		
+
+
 public class UserController {
 		
 	 @Autowired
-	  UserRepository userRepository;
-
-
-	  @GetMapping("/find/{id}")
-	  public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
-	    Optional<User> userData = userRepository.findById(id);
-
-	    if (userData.isPresent()) {
-	      return new ResponseEntity<>(userData.get(), HttpStatus.OK);
-	    } else {
-	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	    }
-	  }
-
-	  @PostMapping("/create")
-	  public ResponseEntity<User> createUser(@RequestBody User user) {
-	    try {
-	      User _user = userRepository
-	          .save(new User (user.getFname(), user.getLname(), user.getEmail(), user.getPassword()));
-	      return new ResponseEntity<>(_user, HttpStatus.CREATED);
-	    } catch (Exception e) {
-	      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-	    }
-	  }
-
-	  @PutMapping("/update/{id}")
-	  public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
-	    Optional<User> userData = userRepository.findById(id);
-
-	    if (userData.isPresent()) {
-	      User _user = userData.get();
-	      _user.setFname(user.getFname());
-	      _user.setLname(user.getLname());
-	      _user.setEmail(user.getEmail());
-	      _user.setPassword(user.getPassword());
-	      return new ResponseEntity<>(userRepository.save(_user), HttpStatus.OK);
-	    } else {
-	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	    }
-	  }
-
-	  @DeleteMapping("/delete/{id}")
-	  public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") Long id) {
-	    try {
-	      userRepository.deleteById(id);
-	      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	    } catch (Exception e) {
-	      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-	    }
-	  }
-}
+	  UserService userService; 
+	 
+	 @PostMapping("/newUser")
+		public ResponseEntity<User> createUser(@RequestBody User users){
+			User user = userService.createUser(users);
+			if(user!=null)
+				return new ResponseEntity<User>(users,HttpStatus.CREATED);
+			else
+				return new ResponseEntity<User>(users,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	 
+		@GetMapping("/all")
+		public List<User> getAllUsers(){
+			return userService.getAllUsers();
+		}
+		
+		@GetMapping("/user/{id}")
+		public ResponseEntity<User> getUserById(@PathVariable Long id){
+			User user= userService.getUserById(id);
+			
+			if(user!=null)
+				return new ResponseEntity<User>(user, HttpStatus.FOUND);
+			else
+				return new ResponseEntity<User>(user, HttpStatus.NOT_FOUND);
+		}
+		@PutMapping("/update/{id}")
+		public ResponseEntity<Object> updateUser(@PathVariable Long id,@RequestBody User users){
+			User user= userService.updateUser(id, users);
+			
+			if (user!=null)
+				return new ResponseEntity<Object>(user,HttpStatus.OK);
+			else
+				return new ResponseEntity<Object>("No User Available to Update",HttpStatus.NOT_FOUND);
+		}
+		
+		@DeleteMapping("/delete/{id}")
+		public ResponseEntity<String>deleteUser(@PathVariable Long id){
+			boolean result = userService.deleteUser(id);
+			if(result) 
+				return new ResponseEntity<String>("Object Deleted",HttpStatus.OK);
+			else
+				return new ResponseEntity<String>("NO user Found", HttpStatus.NOT_FOUND);
+			
+		}
+	
+	 
+	}

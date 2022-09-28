@@ -11,19 +11,30 @@ import com.NMSCinemas.model.*;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-	@Query(value = "SELECT * FROM users WHERE id = :id", nativeQuery = true)
-	public Optional<User> getUserById(@Param("id") Long id);
 	
-	@Query(value = "INSERT INTO movies (fname, lname, email, password) VALUES (?,?,?,?)", nativeQuery = true)
-	public Optional<Movies> createUser(@Param("id") Long id,
-			@Param("fName") String fName,
-			@Param("lName") String lName,
+
+	
+	@Query(value = "INSERT INTO users (fname, lname, email, password) VALUES (?,?,?,?)", nativeQuery = true)
+	public Optional<User> createUser(@Param("id") Long id,
+			@Param("fname") String fname,
+			@Param("lname") String lname,
 			@Param("email") String email,
 			@Param("password") String password);
-
+	
+	@Query(value = "INSERT INTO user WHERE email = :email", nativeQuery = true)
+	public Optional<User> getUserByEmail(@Param("email") String email);
+	
+	@Query(value = "SELECT * FROM user WHERE id = :id", nativeQuery = true)
+	public Optional<User> getUserById(@Param("id") Long id);
+	
+	@Query(value = "SELECT * FROM user", nativeQuery = true)
+	public Optional<User> getAllUsers();
+	
 	@Query(value = "UPDATE user SET fname=?, lname=?, email=?, password=? WHERE id=?", nativeQuery = true)
-	public Optional<Movies> updateUser(@Param("id") Long id);
+	public Optional<User> updateUser(@Param("id") Long id);
 	
 	@Query(value = "DELETE * FROM user WHERE id = :id", nativeQuery = true)
-	public Optional<Movies> deleteUser(@Param("id") Long id);
+	public Optional<User> deleteUser(@Param("id") Long id);
+	
+	
 }

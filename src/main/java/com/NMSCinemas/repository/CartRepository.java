@@ -11,6 +11,10 @@ import com.NMSCinemas.model.*;
 
 @Repository
 public interface CartRepository extends JpaRepository<Cart, Long> {
+	
+	@Query(value = "SELECT * FROM cart", nativeQuery = true)
+	public Optional<Cart> getAllTickets();
+	
 	@Query(value = "SELECT * FROM cart WHERE id = :id", nativeQuery = true)
 	public Optional<Cart> findTicket(@Param("id") Long id);
 	

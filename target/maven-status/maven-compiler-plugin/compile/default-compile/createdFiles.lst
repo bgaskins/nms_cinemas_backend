@@ -4,6 +4,7 @@ com/NMSCinemas/model/Cart.class
 com/NMSCinemas/controller/UserController.class
 com/NMSCinemas/repository/AdminRepository.class
 com/NMSCinemas/repository/CartRepository.class
+com/NMSCinemas/service/UserService.class
 com/NMSCinemas/repository/MovieRepository.class
 com/NMSCinemas/model/User.class
 com/NMSCinemas/controller/MoviesController.class

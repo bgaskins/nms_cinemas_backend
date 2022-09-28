@@ -1,5 +1,6 @@
 package com.NMSCinemas.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,13 @@ public class MoviesController {
 	  MovieRepository movieRepository;
 
 
+	 @GetMapping("/all")
+		public List<Movies> getAllMovies(){
+			return movieRepository.findAll();
+		}
+	 
 	  @GetMapping("/find/{id}")
-	  public ResponseEntity<Movies> getMoviesById(@PathVariable("id") long id) {
+	  public ResponseEntity<Movies> getMoviesById(@PathVariable("id") Long id) {
 	    Optional<Movies> moviesData = movieRepository.findById(id);
 
 	    if (moviesData.isPresent()) {
@@ -51,7 +57,7 @@ public class MoviesController {
 	  }
 
 	  @PutMapping("/update/{id}")
-	  public ResponseEntity<Movies> updateMovie(@PathVariable("id") long id, @RequestBody Movies movie) {
+	  public ResponseEntity<Movies> updateMovie(@PathVariable("id") Long id, @RequestBody Movies movie) {
 	    Optional<Movies> moviesData = movieRepository.findById(id);
 
 	    if (moviesData.isPresent()) {
@@ -69,7 +75,7 @@ public class MoviesController {
 	  }
 
 	  @DeleteMapping("/delete/{id}")
-	  public ResponseEntity<HttpStatus> deleteMovie(@PathVariable("id") long id) {
+	  public ResponseEntity<HttpStatus> deleteMovie(@PathVariable("id") Long id) {
 	    try {
 	      movieRepository.deleteById(id);
 	      return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -24,7 +24,7 @@ public class CartController {
 	CartRepository cartRepository;
 	
 	@GetMapping("/all")
-	public List<Cart> findTicket() {
+	public List<Cart> getAllTickets() {
 		return cartRepository.findAll();
 	}
 	
