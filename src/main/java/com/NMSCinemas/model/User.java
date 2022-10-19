@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -28,8 +30,10 @@ public class User {
 	@Column(name = "password")
 	private String password;
 	
-	
-	public User() {}
+
+	public User() {
+		
+	}
 
 
 	public User(String fname, String lname, String email, String password) {
@@ -91,6 +95,12 @@ public class User {
 	}
 
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", password="
+				+ password + "]";
+	}
+	
 	
 	
 }

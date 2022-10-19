@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+
 @Entity
 @Table(name = "cart")
 public class Cart {
@@ -31,7 +33,8 @@ public class Cart {
 	@Column(name = "ticket_price")
 	private Long ticket_price;
 	
-	public Cart() {}
+	public Cart() {
+	}
 
 	public Cart(String title, String show_date, String show_time, String auditorium, Long ticket_price) {
 		super();
@@ -90,9 +93,14 @@ public class Cart {
 		this.ticket_price = ticket_price;
 	}
 
+	@Override
+	public String toString() {
+		return "Cart [id=" + id + ", title=" + title + ", show_date=" + show_date + ", show_time=" + show_time
+				+ ", auditorium=" + auditorium + ", ticket_price=" + ticket_price + "]";
+	}
 	
 	
-	
+		
 }
 	
 	

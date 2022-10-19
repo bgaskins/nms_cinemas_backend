@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
+
 @Entity
 @Table(name = "search")
 public class Search {
@@ -15,7 +17,20 @@ public class Search {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
+
+
+	@Column(name = "title")
+	private String title;
 	
+	public Search() {
+		
+	}
+
+	public Search(String title) {
+		super();
+		this.title = title;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -24,21 +39,19 @@ public class Search {
 		this.id = id;
 	}
 
-	@Column(name = "title")
-	private String title;
-	
-	public Search() { }
-
-	public Search(String title) {
-		super();
-		this.title = title;
-	}
-
-	public String getMovieName() {
+	public String getTitle() {
 		return title;
 	}
 
-	public void setMovieName(String title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
+
+	@Override
+	public String toString() {
+		return "Search [id=" + id + ", title=" + title + "]";
+	}
+	
+	
+	
 }

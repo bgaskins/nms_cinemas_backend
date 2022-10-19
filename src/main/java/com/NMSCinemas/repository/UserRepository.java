@@ -14,7 +14,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	
 
 	
-	@Query(value = "INSERT INTO users (fname, lname, email, password) VALUES (?,?,?,?)", nativeQuery = true)
+	@Query(value = "INSERT INTO user (fname, lname, email, password) VALUES (?,?,?,?)", nativeQuery = true)
 	public Optional<User> createUser(@Param("id") Long id,
 			@Param("fname") String fname,
 			@Param("lname") String lname,

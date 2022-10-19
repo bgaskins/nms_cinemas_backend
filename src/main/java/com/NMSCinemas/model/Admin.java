@@ -13,6 +13,7 @@ public class Admin {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="id")
 	private int id;
 	
 	@Column(name = "fname")

@@ -1,7 +1,6 @@
 package com.NMSCinemas.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,70 +16,67 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.NMSCinemas.model.Movies;
-import com.NMSCinemas.repository.MovieRepository;
+import com.NMSCinemas.service.MoviesService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/movies")
-		
 public class MoviesController {
 		
 	 @Autowired
-	  MovieRepository movieRepository;
+	  MoviesService moviesService;
 
 
 	 @GetMapping("/all")
 		public List<Movies> getAllMovies(){
-			return movieRepository.findAll();
+			return moviesService.getAllMovies();
+			
 		}
 	 
-	  @GetMapping("/find/{id}")
-	  public ResponseEntity<Movies> getMoviesById(@PathVariable("id") Long id) {
-	    Optional<Movies> moviesData = movieRepository.findById(id);
-
-	    if (moviesData.isPresent()) {
-	      return new ResponseEntity<>(moviesData.get(), HttpStatus.OK);
-	    } else {
-	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	    }
-	  }
-
-	  @PostMapping("/create")
+	 @PostMapping("/create")
 	  public ResponseEntity<Movies> createMovie(@RequestBody Movies movie) {
 	    try {
-	     Movies _movies = movieRepository
-	          .save(new Movies (movie.getTitle(), movie.getTicket_price(), movie.getLanguage(), movie.getDescription(), movie.getTicket_price(), movie.getAuditorium()));
+	     Movies _movies = moviesService
+	          .createMovie(new Movies (movie.getTitle(), movie.getTicket_price(), movie.getLanguage(), movie.getDescription(), movie.getTicket_price(), movie.getAuditorium()));
 	      return new ResponseEntity<>(_movies, HttpStatus.CREATED);
 	    } catch (Exception e) {
 	      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
+	 }
+	  
+	 
+	  @GetMapping("/find/{id}")
+	  public ResponseEntity<Movies> getMoviesById(@PathVariable Long id) {
+	    Movies moviesData = moviesService.getMovieById(id);
+
+	    if (moviesData != null) {
+	      return new ResponseEntity<Movies>(moviesData, HttpStatus.OK);
+	    } else {
+	      return new ResponseEntity<Movies>(moviesData, HttpStatus.NOT_FOUND);
+	    }
 	  }
+	  
+
+	
 
 	  @PutMapping("/update/{id}")
-	  public ResponseEntity<Movies> updateMovie(@PathVariable("id") Long id, @RequestBody Movies movie) {
-	    Optional<Movies> moviesData = movieRepository.findById(id);
-
-	    if (moviesData.isPresent()) {
-	      Movies _movies = moviesData.get();
-	      _movies.setTitle(movie.getTitle());
-	      _movies.setTicket_price(movie.getTicket_price());
-	      _movies.setLanguage(movie.getLanguage());
-	      _movies.setDescription(movie.getDescription());
-	      _movies.setShowtime(movie.getShowtime());
-	      _movies.setAuditorium(movie.getAuditorium());
-	      return new ResponseEntity<>(movieRepository.save(_movies), HttpStatus.OK);
-	    } else {
-	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	    }
+	  public ResponseEntity<Object> updateMovie(@PathVariable("id") Long id, @RequestBody Movies newMovie) {
+		    Movies moviesData = moviesService.updateMovie(id, newMovie);			
+			if (moviesData != null) {
+				return new ResponseEntity<Object>(moviesData,HttpStatus.OK);
+			} else {
+				return new ResponseEntity<Object>("No Movie Available to Update",HttpStatus.NOT_FOUND);
+	  }
 	  }
 
+
 	  @DeleteMapping("/delete/{id}")
-	  public ResponseEntity<HttpStatus> deleteMovie(@PathVariable("id") Long id) {
-	    try {
-	      movieRepository.deleteById(id);
-	      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	    } catch (Exception e) {
-	      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-	    }
+	  public ResponseEntity<String> deleteMovie(@PathVariable Long id) {
+		  boolean result = moviesService.deleteMovie(id);
+			if(result) {
+				return new ResponseEntity<String>("Object Deleted",HttpStatus.OK);
+			}else { 
+				return new ResponseEntity<String>("NO user Found", HttpStatus.NOT_FOUND);
+			}
 	  }
 }

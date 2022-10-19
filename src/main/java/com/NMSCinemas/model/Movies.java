@@ -8,13 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
+
 @Entity
 @Table(name = "movies")
 public class Movies {
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	@Column(name="id")
+	private Long id;
 	
 	@Column(name = "title")
 	private String title;
@@ -37,8 +40,9 @@ public class Movies {
 	public Movies() {
 		
 	}
-	
-	public Movies(String title, String ticket_price, String language, String description, String showtime, String auditorium) {
+
+	public Movies(String title, String ticket_price, String language, String description, String showtime,
+			String auditorium) {
 		super();
 		this.title = title;
 		this.ticket_price = ticket_price;
@@ -47,43 +51,55 @@ public class Movies {
 		this.showtime = showtime;
 		this.auditorium = auditorium;
 	}
-
-	public int getId() {
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getTicket_price() {
 		return ticket_price;
 	}
+
 	public void setTicket_price(String ticket_price) {
 		this.ticket_price = ticket_price;
 	}
+
 	public String getLanguage() {
 		return language;
 	}
+
 	public void setLanguage(String language) {
 		this.language = language;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public String getShowtime() {
 		return showtime;
 	}
+
 	public void setShowtime(String showtime) {
 		this.showtime = showtime;
 	}
+
 	public String getAuditorium() {
 		return auditorium;
 	}
@@ -92,12 +108,13 @@ public class Movies {
 		this.auditorium = auditorium;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Movies [id=" + id + ", title=" + title + ", ticket_price=" + ticket_price + ", language=" + language
-				+ ", description=" + description + ", showtime=" + showtime + ", auditorium=" + showtime + "]";
+				+ ", description=" + description + ", showtime=" + showtime + ", auditorium=" + auditorium + "]";
 	}
+	
+	
 
 }
 	
