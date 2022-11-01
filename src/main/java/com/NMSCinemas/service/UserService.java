@@ -35,7 +35,6 @@ public class UserService {
 			oldUser.setFname(newUser.getFname());
 			oldUser.setLname(newUser.getLname());
 			oldUser.setEmail(newUser.getEmail());
-			oldUser.setPassword(newUser.getPassword());
 			
 			return userRepository.save(oldUser);
 		}

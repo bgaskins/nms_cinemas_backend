@@ -18,8 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	public Optional<User> createUser(@Param("id") Long id,
 			@Param("fname") String fname,
 			@Param("lname") String lname,
-			@Param("email") String email,
-			@Param("password") String password);
+			@Param("email") String email);
 	
 	@Query(value = "INSERT INTO user WHERE email = :email", nativeQuery = true)
 	public Optional<User> getUserByEmail(@Param("email") String email);
