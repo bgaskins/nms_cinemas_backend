@@ -1,109 +1,141 @@
-NMS Cinemas:
+<h3>Jax's Market</h3>
 
-A movie ticket ordering app that allows customers to purchase tickets from anywhere.
-<br>
-<br>
-<br>
+A dynamic and responsive movie ticket ordering webapp that allows customers to purchase their movie tickets on any device.
 
-Built with:
-
-Java<br>
-HTML5<br>
-CSS5<br>
-JavaScript<br>
-Typescript<br>
-
-MySql<br>
-Bootstrap<br>
-Angular<br>
-Spring Boot<br>
+<strong>Features:</strong><br>
+-User and Admin login/logout (Hardcoded validation)<br>
+-Adds, updates, deletes, and retrieves movies from a database<br>
+-Shopping features<br>
+-Checkout/cart functionality<br>
+-Admin dashboard
 
 <br>
+<h4>--- Tech ---</h4>
+
+Backend: Java/Spring, SQL/MySQL, AWS
+<br><br>
+Frontend: HTML5, CSS5, Typescript, Angular, Bootstrap
+<br>
+<br>
+<br>
+<br>
+<h4>--- Demos ---</h4>
+
+https://user-images.githubusercontent.com/96695276/222254451-745a66df-6e25-44a2-b3d0-520dba8f93b4.mp4
+
+<br>
 <br>
 <br>
 
-<img width="75%" alt="Screenshot 2022-11-06 at 1 52 39 PM" src="https://user-images.githubusercontent.com/96695276/200195059-05b4e971-03da-4c43-b63d-c25756591472.png">
-Main page with hero and navbar with registration/login links.
+
+<h5>Mobile<h5>
+
+
+https://user-images.githubusercontent.com/96695276/222255597-dbfd90ba-a5fe-4818-afd9-5af92f48a0bd.mp4
+
 <br>
 <br>
 <br>
-<img width="75%" alt="Screenshot 2022-11-06 at 1 53 44 PM" src="https://user-images.githubusercontent.com/96695276/200195063-f7404f14-83fb-4d6c-9819-39c42634b92c.png">
-Main page includes list of moves currently playing and cards displaying the theatres popular movies. Button for 'Get Tickets' <br>
-brings user to the Now Playing page.
+<h4>---Screenshots---</h4>
 <br>
 <br>
 <br>
-<img width="75%" alt="Screenshot 2022-11-06 at 1 54 13 PM" src="https://user-images.githubusercontent.com/96695276/200195065-8c143fff-1238-4c9e-aefc-bf7231daa706.png">
-A space for marketing. Also located in the footer is the Admin Login link.
+<img width="70%" alt="home-1" src="https://user-images.githubusercontent.com/96695276/222257897-4ca6aa7e-a71e-4d24-b901-598654047b2c.png">
+<img width="70%" alt="home-2" src="https://user-images.githubusercontent.com/96695276/222262763-757b31f1-1e8b-4fcf-a9b6-51c43763420c.png">
+<img width="70%" alt="home-3" src="https://user-images.githubusercontent.com/96695276/222257948-b1613d51-20e7-45ff-8797-c54ba653e591.png">
+<br>
+<br>
+<br>Main page with hero, navbar and registration/login links.
 <br>
 <br>
 <br>
-<img width="75%" alt="Screenshot 2022-11-06 at 1 54 48 PM" src="https://user-images.githubusercontent.com/96695276/200195067-a04eae13-fda1-460a-a9ba-69f339c54656.png">
-Registration page takes user information and sends it to User table in MySql database.
+<br>
+<br>
+<img width="70%" alt="showtimes" src="https://user-images.githubusercontent.com/96695276/222258118-327963ea-d1c3-4b35-82b7-11db992b8098.png">
+<br>
+<br>
+<br>Movies are updated through database and admin. 
 <br>
 <br>
 <br>
-<img width="75%" alt="Screenshot 2022-11-06 at 1 55 21 PM" src="https://user-images.githubusercontent.com/96695276/200195068-b06961b4-f7f2-4145-86e3-72ad77f5bbc4.png">
-Login takes hardcoded User login information.
+<br>
+<br>
+<img width="70%" alt="register" src="https://user-images.githubusercontent.com/96695276/222258617-1c29d7b5-b5b2-4678-ac5e-cb9b96a7f520.png">
+<br>
+<br>
+<br>Registration page takes user information and sends it to 'user' table in database.
 <br>
 <br>
 <br>
-<img width="75%" alt="Screenshot 2022-11-06 at 2 13 33 PM" src="https://user-images.githubusercontent.com/96695276/200195076-34c95f8d-297f-4efb-a263-f81db0d2daba.png">
- When user logs in, the navbar gives user the option to log out.
+<br>
+<br>
+<img width="70%" alt="user-login" src="https://user-images.githubusercontent.com/96695276/222258672-635b3233-c20d-4ac7-8145-2a8d45c880eb.png">
+<br>
+<br>
+<br>Login takes hardcoded 'user' name and passcode.
 <br>
 <br>
 <br>
-<img width="75%" alt="Screenshot 2022-11-06 at 1 56 19 PM" src="https://user-images.githubusercontent.com/96695276/200195070-70f59f1c-9745-4ccb-966f-326b799ec440.png">
-Empty shopping cart alert with empty cart.
+<br>
+<br>
+<img width="70%" alt="user-header" src="https://user-images.githubusercontent.com/96695276/222258779-9ab9ed46-9eb3-4bfc-b1d4-304a2957c764.png">
+<br>
+<br>
+<br>When user logs in, a 'logout' option appears in the navbar.
 <br>
 <br>
 <br>
-<img width="75%" alt="Screenshot 2022-11-06 at 1 56 47 PM" src="https://user-images.githubusercontent.com/96695276/200195071-5430cb11-4cb5-4cc6-9445-10633887b387.png">
-User can access a list of movie information and the ability to book specific tickets at a specific time.
+<br>
+<br>
+<img width="70%" alt="cart" src="https://user-images.githubusercontent.com/96695276/222259381-650581d2-b42a-4103-b555-6c7970ac9dbe.png">
+<br>
+<br>
+<br>Cart details gives users a summary of their order. User can increment/decrement/delete the amount of tickets.
 <br>
 <br>
 <br>
-<img width="75%" alt="Screenshot 2022-11-06 at 1 59 17 PM" src="https://user-images.githubusercontent.com/96695276/200195072-23b790b5-c0fa-4f1f-b2c3-76255a6a3cfb.png">
-Cart details gives users a summary of their order. User can increment/decrement/delete the amount of tickets.
+<br>
+<br>
+<img width="70%" alt="checkout" src="https://user-images.githubusercontent.com/96695276/222259465-5b15ac09-3afc-4195-9407-d4012dd9d6d4.png">
+<br>
+<br>
+<br>Checkout form takes user information for payment. An order summary is availabe.
 <br>
 <br>
 <br>
-<img width="75%" alt="Screenshot 2022-11-06 at 2 10 48 PM" src="https://user-images.githubusercontent.com/96695276/200195073-9f681c09-7bde-449c-a6d0-3b58733e201b.png">
+<br>
+<br>
+<img width="70%" alt="admin-login" src="https://user-images.githubusercontent.com/96695276/222259852-c7b8b213-6659-45ed-9e9a-4f81d1c9106c.png">
+<br>
+<br>
+<br>Login takes hardcoded 'admin' name and passcode.
 <br>
 <br>
 <br>
-<img width="75%" alt="Screenshot 2022-11-06 at 2 12 51 PM" src="https://user-images.githubusercontent.com/96695276/200195075-6676bdb8-c3f5-4126-9108-fe34fcb392ab.png">
-Checkout form takes user information for payment. An order summary is availble at the end of the form before the user submits.
+<br>
+<br>
+<img width="70%" alt="admin-dashboard" src="https://user-images.githubusercontent.com/96695276/222260024-854fd661-7690-48c9-a755-3017a0b05358.png">
+<br>
+<br>
+<br>The admin dashboard lists all movies currently in the database.<br>From here, movies can be created, updated, and deleted.
 <br>
 <br>
 <br>
-<img width="75%" alt="Screenshot 2022-11-06 at 2 11 47 PM" src="https://user-images.githubusercontent.com/96695276/200195074-6f5e2cfe-e5dc-443e-82a0-7a7baf09351b.png">
-NMS Cinemas contact information.
+<br>
+<br>
+<img width="70%"alt="update-movie" src="https://user-images.githubusercontent.com/96695276/222261601-61d39422-cf55-4f28-ab1e-0a3ba1ac22bc.png">
+<br>
+<br>
+<br>Admin can update a movie in the database by changing text/image url, and submitting.
 <br>
 <br>
 <br>
-<img width="75%" alt="Screenshot 2022-11-06 at 1 55 48 PM" src="https://user-images.githubusercontent.com/96695276/200195069-50903393-b55a-428f-848c-0598701d5b4a.png">
-Admin takes hardcoded admin login information.
 <br>
 <br>
-<br>
-<img width="75%" alt="Screenshot 2022-11-06 at 2 14 15 PM" src="https://user-images.githubusercontent.com/96695276/200195077-28a52ff1-6ef7-4914-a57c-46ca5d110ef1.png">
-Once admin logs in, the option for signing in us no longer available.
+<img width="70%" alt="admin-add-movie" src="https://user-images.githubusercontent.com/96695276/222260131-5d43440e-dd67-42ed-9705-e98afbf8d731.png">
 <br>
 <br>
-<br>
-<img width="75%" alt="Screenshot 2022-11-06 at 2 15 15 PM" src="https://user-images.githubusercontent.com/96695276/200195078-e916d0b3-0d6e-45ab-a4e6-14e9de8cb6aa.png">
-The admin dashboard is available once admin logs in successfully. Here the admin can create/update/delete movies by movie id.
-<br>
-<br>
-<br>
-<img width="75%" alt="Screenshot 2022-11-06 at 2 15 45 PM" src="https://user-images.githubusercontent.com/96695276/200195079-60b5d7a4-95a3-4160-b5ae-b31c62529ef3.png">
-Movie update form allows the admin to update the movie list and table in the MySql database.
-<br>
-<br>
-<br>
-<img width="75%" alt="Screenshot 2022-11-06 at 2 16 13 PM" src="https://user-images.githubusercontent.com/96695276/200195080-31d30fee-d162-4a74-b698-da7cae259b97.png">
-Admin can use the Add Movie feature to add new movies to the database.
+<br>Admin can use the Add Movie feature to add movie details and image url to the database. 
 <br>
 <br>
 <br>
