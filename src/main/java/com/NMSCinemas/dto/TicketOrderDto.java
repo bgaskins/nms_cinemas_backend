@@ -9,7 +9,8 @@ import com.NMSCinemas.model.User;
 
 import lombok.Data;
 
-@Data
+
+@Data //Lombok annotation for getters/setters/etc,
 public class TicketOrderDto {
 	
     private User user;

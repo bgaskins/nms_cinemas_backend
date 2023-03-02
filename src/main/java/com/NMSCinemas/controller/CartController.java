@@ -24,9 +24,8 @@ public class CartController {
 
 	    @PostMapping("/order")
 	    public TicketOrderResponse makeOrder(@RequestBody TicketOrderDto order) {
-
 	        TicketOrderResponse orderResponse = cartService.placeOrder(order);
-
+	        // Receives TicketOrderResponse from TicketOrderDTO
 	        return orderResponse;
 	    }
 

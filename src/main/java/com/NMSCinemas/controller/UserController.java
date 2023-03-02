@@ -37,7 +37,7 @@ public class UserController {
 			else
 				return new ResponseEntity<User>(users,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-	 
+	 	
 		@GetMapping("/all")
 		public List<User> getAllUsers(){
 			return userService.getAllUsers();

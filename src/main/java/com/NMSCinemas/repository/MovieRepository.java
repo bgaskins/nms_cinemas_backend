@@ -7,11 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.NMSCinemas.model.*;
+import com.NMSCinemas.model.Movies;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movies, Long> {
-	
+
 	
 	@Query(value = "SELECT * FROM movies", nativeQuery = true)
 	public Optional<Movies> getAllMovies();
@@ -28,6 +28,10 @@ public interface MovieRepository extends JpaRepository<Movies, Long> {
 			@Param("showtime") String showtime,
 			@Param("auditorium") String auditorium
 			);
+	
+	@Query(value = "SELECT * FROM movies WHERE title = :title", nativeQuery = true)
+	public Optional<Movies> searchMovie(@Param("title") String title);
+	
 	
 	@Query(value = "UPDATE movies SET title=?, ticket_price=?, language=?, description=?, showtime=?, auditorium=? WHERE id= :id", nativeQuery = true)
 	public Optional<Movies> updateMovie(@Param("id") Long id);

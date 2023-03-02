@@ -1,6 +1,7 @@
 package com.NMSCinemas.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,29 +23,30 @@ import com.NMSCinemas.service.MoviesService;
 @RestController
 @RequestMapping("/api/movies")
 public class MoviesController {
-		
+	
+	
 	 @Autowired
 	  MoviesService moviesService;
 
-
+	 //Get list of all movies
 	 @GetMapping("/all")
 		public List<Movies> getAllMovies(){
 			return moviesService.getAllMovies();
 			
 		}
-	 
+	 //Create a movie (Admin dashboard)
 	 @PostMapping("/create")
 	  public ResponseEntity<Movies> createMovie(@RequestBody Movies movie) {
 	    try {
 	     Movies _movies = moviesService
-	          .createMovie(new Movies (movie.getTitle(), movie.getTicket_price(), movie.getLanguage(), movie.getDescription(), movie.getTicket_price(), movie.getAuditorium()));
+	          .createMovie(new Movies (movie.getTitle(), movie.getTicket_price(), movie.getLanguage(), movie.getDescription(), movie.getTicket_price(), movie.getAuditorium(), movie.getImage_url()));
 	      return new ResponseEntity<>(_movies, HttpStatus.CREATED);
 	    } catch (Exception e) {
 	      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
 	 }
 	  
-	 
+	 //Find a movie by its ID
 	  @GetMapping("/find/{id}")
 	  public ResponseEntity<Movies> getMoviesById(@PathVariable Long id) {
 	    Movies moviesData = moviesService.getMovieById(id);
@@ -55,10 +57,18 @@ public class MoviesController {
 	      return new ResponseEntity<Movies>(moviesData, HttpStatus.NOT_FOUND);
 	    }
 	  }
-	  
+	  //Search for a movie by its title
+	  @GetMapping("/search/{title}")
+	  public ResponseEntity<Movies> searchByTitle(@PathVariable String title) {
+	      Optional<Movies> searchData = moviesService.searchMovie(title);
 
-	
-
+	      if (searchData.isPresent()) {
+	          return new ResponseEntity<>(searchData.get(), HttpStatus.OK);
+	      } else {
+	          return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	      }
+	  }
+	  //Update a movie (Admin dashboard)
 	  @PutMapping("/update/{id}")
 	  public ResponseEntity<Object> updateMovie(@PathVariable("id") Long id, @RequestBody Movies newMovie) {
 		    Movies moviesData = moviesService.updateMovie(id, newMovie);			
@@ -68,8 +78,8 @@ public class MoviesController {
 				return new ResponseEntity<Object>("No Movie Available to Update",HttpStatus.NOT_FOUND);
 	  }
 	  }
-
-
+	  
+	  // Delete a movie by ID (Admin dashboard)
 	  @DeleteMapping("/delete/{id}")
 	  public ResponseEntity<String> deleteMovie(@PathVariable Long id) {
 		  boolean result = moviesService.deleteMovie(id);

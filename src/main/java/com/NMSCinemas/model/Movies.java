@@ -1,5 +1,6 @@
 package com.NMSCinemas.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,12 +38,15 @@ public class Movies {
 	@Column(name = "auditorium")
 	private String auditorium;
 	
+	@Column(name = "image_url")
+	private String image_url;
+	
 	public Movies() {
 		
 	}
 
 	public Movies(String title, String ticket_price, String language, String description, String showtime,
-			String auditorium) {
+			String auditorium, String image_url) {
 		super();
 		this.title = title;
 		this.ticket_price = ticket_price;
@@ -50,6 +54,8 @@ public class Movies {
 		this.description = description;
 		this.showtime = showtime;
 		this.auditorium = auditorium;
+		this.image_url = image_url;
+
 	}
 	
 	public Long getId() {
@@ -106,12 +112,22 @@ public class Movies {
 
 	public void setAuditorium(String auditorium) {
 		this.auditorium = auditorium;
+		
+	}
+
+	public String getImage_url() {
+		return image_url;
+	}
+
+	public void setImage_url(String image_url) {
+		this.image_url = image_url;
+		
 	}
 
 	@Override
 	public String toString() {
 		return "Movies [id=" + id + ", title=" + title + ", ticket_price=" + ticket_price + ", language=" + language
-				+ ", description=" + description + ", showtime=" + showtime + ", auditorium=" + auditorium + "]";
+				+ ", description=" + description + ", showtime=" + showtime + ", auditorium=" + auditorium + ", image_url=" + image_url + "]";
 	}
 	
 	
